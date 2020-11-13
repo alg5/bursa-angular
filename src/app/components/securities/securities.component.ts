@@ -1,11 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpService } from 'src/app/services/http.service';
-import { BursaEnum, BursaModel, NameId, PaperModel, PaperNameModel, PaperTypeModel, TOTAL, TOTAL_TEXT } from 'src/app/classes/BursaModels';
+import { BursaModel, NameId, PaperModel, PaperNameModel, PaperTypeModel, TOTAL, TOTAL_TEXT } from 'src/app/classes/BursaModels';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {FormControl} from '@angular/forms'
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ShapePaperDetals } from 'src/app/classes/enums';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class SecuritiesComponent implements OnInit, AfterViewInit  {
   
   lastTime: string;
   lastDate:string;
+
+  ShapePaperDetals = ShapePaperDetals;
 
   paperDetails: PaperModel;
   paperDetailsError:number = 0;
@@ -121,7 +124,6 @@ export class SecuritiesComponent implements OnInit, AfterViewInit  {
     
     console.log("333", this.dateFrom.value.toISOString(), dtFrom);
     this.httpService.GetPapers(this.page, this.pageSize, dtFrom, dtTo )
-      // .pipe(first())
       .subscribe(
               data => {
                   // console.log(" securities data: ", data); 
@@ -139,42 +141,9 @@ export class SecuritiesComponent implements OnInit, AfterViewInit  {
                 //TODO
                   // this.loading = false;
     });
-    // console.log("111",this.dataSource);
-  
-    // this.dataSource = new MatTableDataSource<PaperModel>(this.paperListFiltered);
-    // this.dataSource.paginator = this.paginator;
-    // // setTimeout(() => this.dataSource.paginator = this.paginator);
-    // // console.log("paginator",this.paginator?.getNumberOfPages() ) ;
-  }
-  getPaperDetails(paperId: number){
-    this.httpService.GetPaperById(paperId )
-      // .pipe(first())
-      .subscribe(
-              data => {
-                  if(!data) {
-                    //TODO
-                    // this.errMsg = "המשתמש לא נמצא";
-                    // this.loading = false;
-                  
-                    return;
-                  }
-                    if (data["ErrorCode"] == -1){
-                      this.paperDetailsError = data["ErrorCode"] ;
-                      this.paperDetails = null;
-                    }
-                    else{
-                      this.paperDetails = data["GetPaperById"];
-                      this.paperDetailsError = 0;
-                    }
 
-
-                    
-               },
-              error => {
-                //TODO
-                  // this.loading = false;
-    });
   }
+ 
   searchPapersByName(paperName: string){
     this.httpService.SearchPapersByName(paperName )
       // .pipe(first())
@@ -350,7 +319,7 @@ export class SecuritiesComponent implements OnInit, AfterViewInit  {
   {
     console.log ("onExpanded", paperId, this.expandedElement);
     if(this.expandedElement){
-      this.getPaperDetails(paperId);
+      this.httpService.subjectPaperDetails.next(paperId);
     }
     else{
       this.paperDetails = null;

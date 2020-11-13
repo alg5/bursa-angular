@@ -16,13 +16,17 @@ import {  MatDatepickerModule,  } from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { OnlyHebrewDirective } from '../classes/only-hebrew.directive';
 import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 // import { MatMomentDateModule } from "@angular/material-moment-adapter";
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
-
+import { MenuCornerComponent } from '../components/menu-corner/menu-corner.component';
+import { PaperDetailsComponent } from '../components/paper-details/paper-details.component';
+import { ListCubePaperDetailsComponent } from '../components/list-cube-paper-details/list-cube-paper-details.component';
 @NgModule({
-  declarations: [ SecuritiesComponent, LiveSearchComponent, OnlyHebrewDirective],
+  declarations: [ SecuritiesComponent, LiveSearchComponent, MenuCornerComponent, OnlyHebrewDirective
+                 , PaperDetailsComponent, ListCubePaperDetailsComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -38,6 +42,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
+    MatMenuModule,
     MatPaginatorModule,
     NgxPaginationModule,
     // MatPaginatorIntl
@@ -52,6 +57,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatDatepickerModule,
     MatNativeDateModule,
     MatListModule,
+    MatMenuModule,
     MatPaginatorModule,
     // MatPaginatorIntl,
     FormsModule,

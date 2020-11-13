@@ -10,6 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OnlyHebrewDirective } from './classes/only-hebrew.directive';
+// import { ListCubePaperDetailsComponent } from './components/list-cube-paper-details/list-cube-paper-details.component';
+// import { PaperDetailsComponent } from './components/paper-details/paper-details.component';
+// import { MenuCornerComponent } from './components/menu-corner/menu-corner.component';
 // import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatSelectModule } from '@angular/material/select';
 // import { MatTableModule} from '@angular/material/table';
@@ -19,6 +22,9 @@ import { OnlyHebrewDirective } from './classes/only-hebrew.directive';
 @NgModule({
   declarations: [
     AppComponent,
+    // ListCubePaperDetailsComponent,
+    // PaperDetailsComponent,
+    // MenuCornerComponent,
   ],
   
   imports: [
