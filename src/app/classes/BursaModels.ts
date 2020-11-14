@@ -1,3 +1,5 @@
+import { ShapePaperDetals } from './enums';
+
 export interface INameId{
     Id: number;
     Name:string;
@@ -19,6 +21,15 @@ export interface INameId{
 export class PaperNameModel implements INameId{
     Id: number;
     Name:string;
+  }
+  
+  export class SubjectPaperDetails{
+    PaperId: number;
+    Shape: ShapePaperDetals;
+    constructor(p:number, s:ShapePaperDetals){
+      this.PaperId = p;
+      this.Shape = s;
+    }
   }
 
 export class PaperModel{

@@ -110,7 +110,7 @@
                     currentPage: page,
                     totalItems: totalPapers}"
                     >
-                  <tr (click)="expandedElement = expandedElement === paper ? null : paper;onExpanded(paper.PaperId)">
+                  <tr (click)="expandedElement = expandedElement === paper ? null : paper;onExpanded(paper.PaperId, ShapePaperDetals.Row)">
                     <td>{{ paper.PaperName}}</td>
                     <td>{{ paper.PaperTypeValue.Name }}</td>
                     <td>{{ paper.LastDeal }}</td>

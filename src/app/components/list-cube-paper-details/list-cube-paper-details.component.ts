@@ -1,7 +1,7 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { PaperNameModel } from 'src/app/classes/BursaModels';
+import { PaperNameModel, SubjectPaperDetails } from 'src/app/classes/BursaModels';
 import { ShapePaperDetals } from 'src/app/classes/enums';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -49,9 +49,9 @@ export class ListCubePaperDetailsComponent implements OnInit {
                 // this.loading = false;
   });
   }
-  showDetails(id){
+  showDetails(id:number, shape: ShapePaperDetals){
     console.log("showDetails", id, this.expandedElement);
-    this.httpService.subjectPaperDetails.next(id);
+    this.httpService.subjectPaperDetails.next(new SubjectPaperDetails(id, shape));
 
   }
 

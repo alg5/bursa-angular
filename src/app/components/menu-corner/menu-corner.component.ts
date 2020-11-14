@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-menu-corner',
@@ -7,14 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuCornerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
-//   clickMenuItem(menuItem : MatMenuListItem){
-//     console.log(menuItem);
-//     // this.selectedMenu = menuItem.menuLinkText;
-// }
+  navigateMenu(tag){
+    switch (tag){
+      case 'cube':
+        this.router.navigate(['/cube']);
+        break;
+    }
+    
+  }
 
 
 }

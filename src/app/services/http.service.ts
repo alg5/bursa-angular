@@ -3,13 +3,14 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 // import { User } from './user';
 import { Observable, Subject, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { SubjectPaperDetails } from '../classes/BursaModels';
 // import { Customer } from '../objects/Customer';
 //  import { PaperModel } from '../Models/PaperModel';
 
 @Injectable({ providedIn: 'root' })
 export class HttpService {
 
-  subjectPaperDetails: Subject<number> =  new Subject<number>();
+  subjectPaperDetails: Subject<SubjectPaperDetails> =  new Subject<SubjectPaperDetails>();
 
   constructor(private http: HttpClient) { }
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { PaperModel } from 'src/app/classes/BursaModels';
 import { ShapePaperDetals } from 'src/app/classes/enums';
@@ -15,6 +16,8 @@ export class PaperDetailsComponent implements OnInit {
   @Input() shape : ShapePaperDetals.Row;
 
   ShapePaperDetals = ShapePaperDetals;
+
+  fragment:string = '';
 
   paperDetails:PaperModel = null;
   paperDetailsError:number = 0;
@@ -38,15 +41,17 @@ export class PaperDetailsComponent implements OnInit {
     , RateSell: "שאר מכירה" 
   }
  
-  
-  
-  constructor(private httpService: HttpService) { }
+    
+  constructor(private httpService: HttpService, private route: ActivatedRoute) { 
+ 
+  }
 
   ngOnInit(): void {
-      this.httpService.subjectPaperDetails.subscribe((n)=>{
-        // console.log("this.events.subscribe((n)", n, this.paperId);
-        if(n == this.paperId){
-          this.GetDetailsFromApi(n);
+  
+      this.httpService.subjectPaperDetails.subscribe((data)=>{
+        // console.log("this.events.subscribe((data)", data, this.paperId);
+        if(data.PaperId == this.paperId && data.Shape == this.shape){
+          this.GetDetailsFromApi(data.PaperId);
         }
         
       })
@@ -55,14 +60,15 @@ export class PaperDetailsComponent implements OnInit {
     // this.eventsSubscription = this.events.subscribe((n) => this.GetDetailsFromApi(n));
   }
   ngOnDestroy() {
-    this.httpService.subjectPaperDetails.unsubscribe();
+
+    // this.httpService.subjectPaperDetails.unsubscribe();
   }
   GetDetailsFromApi(n:number){
-    console.log("GetDetailsFromApi", n, this.paperId);
+    // console.log("GetDetailsFromApi", n, this.paperId);
     this.httpService.GetPaperById(n).subscribe((data)=>{
       // console.log("this.events.subscribe((n)", n, this.paperId);
       this.paperDetails = data["GetPaperById"];
-      console.log("GetDetailsFromApi", n, this.paperId,  this.paperDetails);
+      console.log("GetDetailsFromApi", n,  this.paperDetails);
       
     })
   }
