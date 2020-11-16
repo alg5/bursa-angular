@@ -46,12 +46,5 @@ export class PaperModel{
 
   }
 
-export const TOTAL: number =0;
-export const TOTAL_TEXT: string = "הכול";
-// export enum BursaEnum {
-//     None,
-//     Israel,
-//     Usa,
-//     Europe,
-// }
+
 

@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { HttpService } from 'src/app/services/http.service';
-import { BursaModel, NameId, PaperModel, PaperNameModel, PaperTypeModel, SubjectPaperDetails, TOTAL, TOTAL_TEXT } from 'src/app/classes/BursaModels';
+import { BursaModel, NameId, PaperModel, PaperNameModel, PaperTypeModel, SubjectPaperDetails } from 'src/app/classes/BursaModels';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {FormControl} from '@angular/forms'
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ShapePaperDetals } from 'src/app/classes/enums';
+import { ShapePaperDetals, TOTAL, TOTAL_TEXT } from 'src/app/classes/enums';
 
 
 @Component({
